@@ -22,7 +22,7 @@ public class RegistrationAcceptanceTest {
         registrationService.createUser("name", "password");
 
         var persistedUser = repository.findBy("id");
-        assertThat(persistedUser, is(persistedUser));
+        assertThat(persistedUser, is(user));
 
     }
 
