@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RegistrationServiceContract {
+public class FakeRegistrationServiceContract {
 
     @Test
     public void createUser() {
