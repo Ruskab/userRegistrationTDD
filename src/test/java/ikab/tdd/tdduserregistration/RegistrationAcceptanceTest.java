@@ -1,5 +1,8 @@
 package ikab.tdd.tdduserregistration;
 
+import ikab.tdd.tdduserregistration.fake.FakeIdGenerator;
+import ikab.tdd.tdduserregistration.fake.FakeMailService;
+import ikab.tdd.tdduserregistration.fake.FakeUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,18 +14,19 @@ public class RegistrationAcceptanceTest {
     private UserRepository repository;
     private MailService mailService;
     private IdGenerator idGenerator;
+    private RegistrationService registrationService;
 
     @BeforeEach
     void setUp() {
         idGenerator = new FakeIdGenerator();
         repository = new FakeUserRepository();
         mailService = new FakeMailService();
+        registrationService = new RegistrationService(repository, idGenerator, mailService);
     }
 
     @Test
     public void register_new_user() {
         var user = User.of(idGenerator.generatedId(), "name", "password");
-        RegistrationService registrationService = new RegistrationService(repository, idGenerator, mailService);
 
         registrationService.createUser("name", "password");
 

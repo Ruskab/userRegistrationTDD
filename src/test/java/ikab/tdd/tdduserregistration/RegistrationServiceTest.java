@@ -17,6 +17,7 @@ class RegistrationServiceTest {
     private UserRepository repository;
     private IdGenerator idGenerator;
     private MailService mailService;
+    private RegistrationService registrationService;
 
     @BeforeEach
     void setUp() {
@@ -24,13 +25,14 @@ class RegistrationServiceTest {
         idGenerator = mock(IdGenerator.class);
         mailService = mock(MailService.class);
         doReturn(UNIQUE_ID).when(idGenerator).generatedId();
+        registrationService = new RegistrationService(repository, idGenerator, mailService);
     }
 
     @Test
     void createUser_should_persiste_user_with_randomly_generated_id_and_send_mail() {
         User user = User.of(UNIQUE_ID, "name", "password");
 
-        new RegistrationService(repository, idGenerator, mailService).createUser("name", "password");
+        registrationService.createUser("name", "password");
 
         verify(idGenerator, times(1)).generatedId();
         verify(repository, times(1)).save(user);
@@ -39,7 +41,7 @@ class RegistrationServiceTest {
 
     @Test
     public void createUser_should_not_persiste_user_without_all_required_data_and_throw_exception() {
-        assertThrows(MissingRequiredDataException.class, () -> new RegistrationService(repository, idGenerator, mailService).createUser("", ""));
+        assertThrows(MissingRequiredDataException.class, () -> registrationService.createUser("", ""));
         verify(idGenerator, times(0)).generatedId();
         verify(repository, times(0)).save(any());
         verify(mailService, times(0)).sendWelcomeMail(any());

@@ -1,4 +1,7 @@
-package ikab.tdd.tdduserregistration;
+package ikab.tdd.tdduserregistration.fake;
+
+import ikab.tdd.tdduserregistration.User;
+import ikab.tdd.tdduserregistration.UserRepository;
 
 public class FakeUserRepository implements UserRepository {
     private User user;
