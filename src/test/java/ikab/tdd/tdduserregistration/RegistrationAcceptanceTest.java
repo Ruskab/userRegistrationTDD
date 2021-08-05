@@ -21,7 +21,7 @@ public class RegistrationAcceptanceTest {
     @Test
     public void register_new_user() {
         var user = User.of("id", "name", "password");
-        RegistrationService registrationService = new RegistrationService(repository, idGenerator);
+        RegistrationService registrationService = new RegistrationService(repository, idGenerator, mailService);
 
         registrationService.createUser("name", "password");
 

@@ -6,10 +6,12 @@ public class RegistrationService {
 
     private UserRepository userRepository;
     private IdGenerator idGenerator;
+    private MailService mailService;
 
-    public RegistrationService(UserRepository userRepository, IdGenerator idGenerator) {
+    public RegistrationService(UserRepository userRepository, IdGenerator idGenerator, MailService mailService) {
         this.userRepository = userRepository;
         this.idGenerator = idGenerator;
+        this.mailService = mailService;
     }
 
     public void createUser(String name, String password) {
@@ -17,6 +19,8 @@ public class RegistrationService {
             throw new MissingRequiredDataException("name or password is missign");
         }
         var uniqueId = idGenerator.generateId();
-        userRepository.save(User.of(uniqueId, name, password));
+        User user = User.of(uniqueId, name, password);
+        userRepository.save(user);
+        mailService.sendWelcomeMail(user);
     }
 }
