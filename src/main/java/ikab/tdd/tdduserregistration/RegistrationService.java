@@ -18,7 +18,7 @@ public class RegistrationService {
         if (name.isBlank() || password.isBlank()) {
             throw new MissingRequiredDataException("name or password is missign");
         }
-        var uniqueId = idGenerator.generateId();
+        var uniqueId = idGenerator.generatedId();
         User user = User.of(uniqueId, name, password);
         userRepository.save(user);
         mailService.sendWelcomeMail(user);

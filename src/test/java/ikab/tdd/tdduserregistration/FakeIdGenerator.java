@@ -3,8 +3,16 @@ package ikab.tdd.tdduserregistration;
 import java.nio.charset.StandardCharsets;
 
 public class FakeIdGenerator implements IdGenerator {
+
+    private String generatedId;
+
     @Override
-    public String generateId() {
-        return new String(new byte[7], StandardCharsets.UTF_8);
+    public String generatedId() {
+        generatedId = new String(new byte[7], StandardCharsets.UTF_8);
+        return generatedId;
+    }
+
+    public String getGeneratedId() {
+        return generatedId;
     }
 }

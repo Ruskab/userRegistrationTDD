@@ -23,6 +23,10 @@ public class User {
         return new User(null, name, password);
     }
 
+    public static User copy(User user) {
+        return User.of(user.id, user.name, user.password);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

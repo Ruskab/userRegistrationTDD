@@ -16,16 +16,17 @@ public class RegistrationAcceptanceTest {
     void setUp() {
         idGenerator = new FakeIdGenerator();
         repository = new FakeUserRepository();
+        mailService = new FakeMailService();
     }
 
     @Test
     public void register_new_user() {
-        var user = User.of("id", "name", "password");
+        var user = User.of(idGenerator.generatedId(), "name", "password");
         RegistrationService registrationService = new RegistrationService(repository, idGenerator, mailService);
 
         registrationService.createUser("name", "password");
 
-        var persistedUser = repository.findBy("id");
+        var persistedUser = repository.findBy(idGenerator.generatedId());
         assertThat(persistedUser, is(user));
     }
 

@@ -23,7 +23,7 @@ class RegistrationServiceTest {
         repository = mock(UserRepository.class);
         idGenerator = mock(IdGenerator.class);
         mailService = mock(MailService.class);
-        doReturn(UNIQUE_ID).when(idGenerator).generateId();
+        doReturn(UNIQUE_ID).when(idGenerator).generatedId();
     }
 
     @Test
@@ -32,7 +32,7 @@ class RegistrationServiceTest {
 
         new RegistrationService(repository, idGenerator, mailService).createUser("name", "password");
 
-        verify(idGenerator, times(1)).generateId();
+        verify(idGenerator, times(1)).generatedId();
         verify(repository, times(1)).save(user);
         verify(mailService, times(1)).sendWelcomeMail(user);
     }
@@ -40,7 +40,7 @@ class RegistrationServiceTest {
     @Test
     public void createUser_should_not_persiste_user_without_all_required_data_and_throw_exception() {
         assertThrows(MissingRequiredDataException.class, () -> new RegistrationService(repository, idGenerator, mailService).createUser("", ""));
-        verify(idGenerator, times(0)).generateId();
+        verify(idGenerator, times(0)).generatedId();
         verify(repository, times(0)).save(any());
         verify(mailService, times(0)).sendWelcomeMail(any());
     }
