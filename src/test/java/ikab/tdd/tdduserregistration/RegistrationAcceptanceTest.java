@@ -14,13 +14,6 @@ public class RegistrationAcceptanceTest {
     private UserRepository repository;
     private MailService mailService;
 
-    @BeforeEach
-    void setUp() {
-
-        mailService = mock(MailService.class);
-        repository = mock(UserRepository.class);
-    }
-
     @Test
     public void register_new_user() {
         var user = User.of("id", "name", "password");
@@ -28,8 +21,6 @@ public class RegistrationAcceptanceTest {
 
         registrationService.createUser("name", "password");
 
-        verify(repository, times(1)).save(user);
-        verify(mailService, times(1)).sendWelcomeMail(user);
         var persistedUser = repository.findBy("id");
         assertThat(persistedUser, is(persistedUser));
 
