@@ -1,5 +1,10 @@
 package ikab.tdd.tdduserregistration;
 
+import ikab.tdd.tdduserregistration.domain.IdGenerator;
+import ikab.tdd.tdduserregistration.domain.MailService;
+import ikab.tdd.tdduserregistration.domain.RegistrationService;
+import ikab.tdd.tdduserregistration.domain.User;
+import ikab.tdd.tdduserregistration.domain.UserRepository;
 import ikab.tdd.tdduserregistration.exceptions.MissingRequiredDataException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

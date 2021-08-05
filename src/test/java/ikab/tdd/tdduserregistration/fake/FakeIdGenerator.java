@@ -1,6 +1,6 @@
 package ikab.tdd.tdduserregistration.fake;
 
-import ikab.tdd.tdduserregistration.IdGenerator;
+import ikab.tdd.tdduserregistration.domain.IdGenerator;
 
 import java.nio.charset.StandardCharsets;
 

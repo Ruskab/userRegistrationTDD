@@ -1,5 +1,6 @@
-package ikab.tdd.tdduserregistration;
+package ikab.tdd.tdduserregistration.domain;
 
+import ikab.tdd.tdduserregistration.exceptions.AlreadyExistentUserException;
 import ikab.tdd.tdduserregistration.exceptions.MissingRequiredDataException;
 
 

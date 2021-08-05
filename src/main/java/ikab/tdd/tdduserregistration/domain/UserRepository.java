@@ -1,4 +1,4 @@
-package ikab.tdd.tdduserregistration;
+package ikab.tdd.tdduserregistration.domain;
 
 import java.util.Optional;
 

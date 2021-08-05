@@ -1,7 +1,7 @@
 package ikab.tdd.tdduserregistration.fake;
 
-import ikab.tdd.tdduserregistration.MailService;
-import ikab.tdd.tdduserregistration.User;
+import ikab.tdd.tdduserregistration.domain.MailService;
+import ikab.tdd.tdduserregistration.domain.User;
 
 public class FakeMailService implements MailService {
     @Override

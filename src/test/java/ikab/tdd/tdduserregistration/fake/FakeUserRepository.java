@@ -1,7 +1,7 @@
 package ikab.tdd.tdduserregistration.fake;
 
-import ikab.tdd.tdduserregistration.User;
-import ikab.tdd.tdduserregistration.UserRepository;
+import ikab.tdd.tdduserregistration.domain.User;
+import ikab.tdd.tdduserregistration.domain.UserRepository;
 
 import java.util.Optional;
 

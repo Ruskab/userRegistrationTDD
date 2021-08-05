@@ -1,19 +1,27 @@
-package ikab.tdd.tdduserregistration;
+package ikab.tdd.tdduserregistration.domain;
 
-import org.hamcrest.Matcher;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "User")
 public class User {
-    private final String id;
 
-    private final String name;
-    private final String password;
+    @Id
+    private String id;
+    private String name;
+    private String password;
 
     private User(String id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
+    }
+
+    public User() {
+
     }
 
     public static User of(String id, String name, String password) {
