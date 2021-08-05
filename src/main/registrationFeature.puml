@@ -1,0 +1,15 @@
+@startuml
+
+actor User as actor
+control RegistrationService as service
+collections RegistrationRepository as repository
+activate service
+
+actor -> service
+service -> repository
+service <- repository
+actor <- service
+deactivate service
+
+
+@enduml
