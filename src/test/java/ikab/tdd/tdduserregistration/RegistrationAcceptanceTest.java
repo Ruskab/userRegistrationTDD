@@ -1,13 +1,9 @@
 package ikab.tdd.tdduserregistration;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 public class RegistrationAcceptanceTest {
 
@@ -23,7 +19,6 @@ public class RegistrationAcceptanceTest {
 
         var persistedUser = repository.findBy("id");
         assertThat(persistedUser, is(user));
-
     }
 
 }
