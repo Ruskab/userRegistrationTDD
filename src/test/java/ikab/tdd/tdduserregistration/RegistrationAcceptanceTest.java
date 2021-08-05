@@ -13,7 +13,7 @@ public class RegistrationAcceptanceTest {
     @Test
     public void register_new_user() {
         var user = User.of("id", "name", "password");
-        RegistrationService registrationService = new RegistrationService();
+        RegistrationService registrationService = new RegistrationService(repository);
 
         registrationService.createUser("name", "password");
 
