@@ -2,6 +2,7 @@ package ikab.tdd.tdduserregistration;
 
 import ikab.tdd.tdduserregistration.exceptions.MissingRequiredDataException;
 
+
 public class RegistrationService {
 
     private UserRepository userRepository;
@@ -17,6 +18,9 @@ public class RegistrationService {
     public void createUser(String name, String password) {
         if (name.isBlank() || password.isBlank()) {
             throw new MissingRequiredDataException("name or password is missign");
+        }
+        if (userRepository.getByName(name).isPresent()) {
+            throw new AlreadyExistentUserException("User with name " + name + "already exists");
         }
         var uniqueId = idGenerator.generatedId();
         User user = User.of(uniqueId, name, password);

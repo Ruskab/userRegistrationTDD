@@ -5,9 +5,10 @@ import org.hamcrest.Matcher;
 import java.util.Objects;
 
 public class User {
-    private String id;
-    private String name;
-    private String password;
+    private final String id;
+
+    private final String name;
+    private final String password;
 
     private User(String id, String name, String password) {
         this.id = id;
@@ -25,6 +26,10 @@ public class User {
 
     public static User copy(User user) {
         return User.of(user.id, user.name, user.password);
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
