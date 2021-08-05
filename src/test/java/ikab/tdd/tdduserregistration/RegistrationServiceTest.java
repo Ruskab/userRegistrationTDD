@@ -1,8 +1,10 @@
 package ikab.tdd.tdduserregistration;
 
+import ikab.tdd.tdduserregistration.exceptions.MissingRequiredDataException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -31,9 +33,8 @@ class RegistrationServiceTest {
     }
 
     @Test
-    public void createUser_should_not_persiste_user_without_all_required_data() {
-        new RegistrationService(repository, idGenerator).createUser("", "");
-
+    public void createUser_should_not_persiste_user_without_all_required_data_and_throw_exception() {
+        assertThrows(MissingRequiredDataException.class, () -> new RegistrationService(repository, idGenerator).createUser("", ""));
         verify(idGenerator, times(0)).generateId();
         verify(repository, times(0)).save(any());
     }
