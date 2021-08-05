@@ -12,8 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RegistrationServiceContract {
 
-    private RegistrationService registrationService;
-
     @Test
     public void createUser() {
         registrationService().createUser("name", "password");
