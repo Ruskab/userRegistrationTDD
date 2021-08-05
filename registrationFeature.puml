@@ -5,8 +5,8 @@ control RegistrationService as service
 collections RegistrationRepository as repository
 activate service
 
-actor -> service
-service -> repository
+actor -> service : createUser(name, pass)
+service -> repository : save(User)
 service <- repository
 actor <- service
 deactivate service
