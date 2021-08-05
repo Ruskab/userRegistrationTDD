@@ -1,5 +1,6 @@
 package ikab.tdd.tdduserregistration;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,6 +11,12 @@ public class RegistrationAcceptanceTest {
     private UserRepository repository;
     private MailService mailService;
     private IdGenerator idGenerator;
+
+    @BeforeEach
+    void setUp() {
+        idGenerator = new FakeIdGenerator();
+        repository = new FakeUserRepository();
+    }
 
     @Test
     public void register_new_user() {
